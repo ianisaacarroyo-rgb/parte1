@@ -29,3 +29,89 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* Contenido central que se revela (Texto + Corazón) */
+    .content {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      animation: revealContent 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+      animation-delay: 0.3s;
+      padding: 0 10px;
+    }
+
+    .text {
+      font-size: 60px;
+      color: #5c1d68;
+      white-space: nowrap;
+    }
+
+    /* Animación de la forma del corazón */
+    .heart-svg {
+      width: 55px;
+      height: 55px;
+      fill: #e73859;
+      transform: scale(0);
+      animation: popHeart 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation-delay: 1.1s;
+      flex-shrink: 0;
+    }
+
+    /* Líneas blancas verticales */
+    .line {
+      width: 4px;
+      height: 80px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Keyframes de las animaciones */
+    @keyframes revealContent {
+      0% {
+        max-width: 0;
+        opacity: 0;
+      }
+      100% {
+        max-width: 400px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes popHeart {
+      0% {
+        transform: scale(0);
+      }
+      70% {
+        transform: scale(1.25);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animation-wrapper">
+    <!-- Línea Izquierda -->
+    <div class="line"></div>
+
+    <!-- Texto y Corazón revelándose -->
+    <div class="content">
+      <span class="text">I</span>
+      <svg class="heart-svg" viewBox="0 0 100 100">
+        <path d="M50,88.2C25.5,70.2,8.5,54.4,8.5,35.3C8.5,21.8,19.5,10.8,33,10.8c8.2,0,16.2,4.2,20.2,10.8c4-6.6,12-10.8,20.2-10.8c13.5,0,24.5,11,24.5,24.5c0,19.1-17,34.9-41.5,52.9L50,88.2z"/>
+      </svg>
+      <span class="text">YOU</span>
+    </div>
+
+    <!-- Línea Derecha -->
+    <div class="line"></div>
+  </div>
+
+</body>
+</html>
